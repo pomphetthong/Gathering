@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ระบบลงทะเบียนชมรม</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg custom-navbar shadow-sm">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center gap-2 pointer" onclick="showPage('home')">
+        <i class="bi bi-megaphone-fill" style="font-size:1.7rem;color:#ff9b05;"></i>
+        <span class="fw-bold" style="color:#53a8ed;font-size:1.35rem;letter-spacing:1px;">ประชาสัมพันธ์ชมรม</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto align-items-center gap-2">
+          <li class="nav-item">
+            <a class="nav-link pointer d-flex align-items-center gap-1" onclick="showPage('home')">
+              <i class="bi bi-house-door-fill"></i> หน้าหลัก
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer d-flex align-items-center gap-1" onclick="showPage('register')">
+              <i class="bi bi-pencil-square"></i> ลงทะเบียน
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer d-flex align-items-center gap-1" onclick="showPage('list')">
+              <i class="bi bi-list-ul"></i> รายชื่อผู้สมัคร
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link pointer d-flex align-items-center gap-1" onclick="showPage('detail')">
+              <i class="bi bi-info-circle-fill"></i> รายละเอียด
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- หน้าแรก -->
+  <div id="home" class="container mt-4" style="margin-top: 90px;">
+    <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80" class="big-image rounded shadow" alt="big club image">
+    <div class="text-center">
+      <h1>ระบบลงทะเบียนชมรม</h1>
+      <p>เลือกชมรมที่คุณสนใจและสมัครได้เลย!</p>
+      <button class="btn btn-success btn-lg" onclick="showPage('register')">ลงทะเบียน</button>
+    </div>
+    <!-- จบเนื้อหาหลักหน้าแรก -->
+    <div class="about-box card shadow-sm mx-auto mb-3" style="max-width: 600px; border-radius: 1.2rem;">
+      <div class="card-body">
+        <h5 class="card-title mb-2" style="color:#ff6600;"><i class="bi bi-info-circle-fill me-1"></i> เกี่ยวกับระบบลงทะเบียนชมรม</h5>
+        <p class="card-text mb-1">ระบบนี้ช่วยให้นักเรียนสามารถสมัครเข้าชมรมต่าง ๆ ได้อย่างสะดวก รวดเร็ว และปลอดภัย ข้อมูลของผู้สมัครจะถูกจัดเก็บอย่างเป็นระบบ และสามารถดูรายชื่อผู้สมัครได้ทันที</p>
+        <ul class="mb-1 ps-3">
+          <li>เลือกชมรมที่สนใจและกรอกข้อมูลให้ครบถ้วน</li>
+          <li>ตรวจสอบรายชื่อผู้สมัครและรายละเอียดชมรมได้ตลอดเวลา</li>
+          <li>ระบบรองรับการใช้งานทั้งคอมพิวเตอร์และมือถือ</li>
+        </ul>
+        <p class="card-text text-muted small">หากพบปัญหาหรือข้อเสนอแนะ ติดต่อผู้ดูแลระบบได้ที่อีเมล: <a href="mailto:clubadmin@example.com">clubadmin@example.com</a></p>
+      </div>
+    </div>
+  </div>
+  <!-- จบหน้าแรก -->
+  <div class="credit-bar text-center text-muted small py-2">
+    © 2025 พัฒนาโดย ป้อมเพชร ทองปลิว (rin_x)
+  </div>
+
+  <!-- หน้าลงทะเบียน -->
+  <div id="register" class="container mt-4" style="display:none; max-width:600px; margin-top: 90px;">
+    <h2>ลงทะเบียน</h2>
+    <form id="registerForm">
+      <div class="mb-3">
+        <label for="name" class="form-label">ชื่อจริง</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="mb-3">
+        <label for="room" class="form-label">ห้อง</label>
+        <input type="text" class="form-control" id="room" required>
+      </div>
+      <div class="mb-3">
+        <label for="sop" class="form-label">ข้อความ SOP</label>
+        <textarea class="form-control" id="sop" rows="4" required></textarea>
+      </div>
+      <div class="mb-3">
+        <a href="#" onclick="showPage('detail')">ลิ้งคลิ๊กเพื่อดูรายละเอียด</a>
+      </div>
+      <div class="mb-3">
+        <label class="form-label">เลือกชมรม</label>
+        <select class="form-select" id="club" required>
+          <option value="">-- เลือกชมรม --</option>
+          <option value="IT support">IT support</option>
+          <option value="RoboTech">RoboTech</option>
+          <option value="Full Stack Dev">Full Stack Dev</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary">ส่งข้อมูล</button>
+    </form>
+    <div id="registerSuccess" class="alert alert-success mt-3" style="display:none;">บันทึกข้อมูลเรียบร้อยแล้ว!</div>
+  </div>
+
+  <!-- รายชื่อผู้สมัคร -->
+  <div id="list" class="container mt-4" style="display:none; max-width:700px; margin-top: 90px;">
+    <h2>รายชื่อผู้สมัคร</h2>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ชื่อจริง</th>
+          <th>ห้อง</th>
+          <th>ชมรม</th>
+        </tr>
+      </thead>
+      <tbody id="applicantList">
+        <!-- รายชื่อจะถูกเพิ่มที่นี่ -->
+      </tbody>
+    </table>
+  </div>
+
+  <!-- รายละเอียด -->
+  <div id="detail" class="container mt-4" style="display:none; max-width:700px; margin-top: 90px;">
+    <h2>รายละเอียดชมรม</h2>
+    <ul>
+      <li><b>IT support</b>: เรียนรู้การดูแลระบบคอมพิวเตอร์และเครือข่าย</li>
+      <li><b>RoboTech</b>: สร้างและควบคุมหุ่นยนต์</li>
+      <li><b>Full Stack Dev</b>: พัฒนาเว็บไซต์และแอปพลิเคชันแบบครบวงจร</li>
+    </ul>
+    <button class="btn btn-secondary" onclick="showPage('register')">กลับไปลงทะเบียน</button>
+  </div>
+
+  <script>
+    // ฟังก์ชันเปลี่ยนหน้า
+    function showPage(page) {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('register').style.display = 'none';
+      document.getElementById('list').style.display = 'none';
+      document.getElementById('detail').style.display = 'none';
+      document.getElementById(page).style.display = '';
+    }
+
+    // ฟังก์ชันบันทึกข้อมูลผู้สมัคร
+    const form = document.getElementById('registerForm');
+    const applicantList = document.getElementById('applicantList');
+    const registerSuccess = document.getElementById('registerSuccess');
+    let applicants = [];
+
+    form && form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const room = document.getElementById('room').value.trim();
+      const sop = document.getElementById('sop').value.trim();
+      const club = document.getElementById('club').value;
+      if(name && room && sop && club) {
+        applicants.push({ name, room, sop, club });
+        updateApplicantList();
+        form.reset();
+        registerSuccess.style.display = '';
+        setTimeout(()=>{ registerSuccess.style.display = 'none'; showPage('list'); }, 1200);
+      }
+    });
+
+    function updateApplicantList() {
+      applicantList.innerHTML = '';
+      applicants.forEach(app => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${app.name}</td><td>${app.room}</td><td>${app.club}</td>`;
+        applicantList.appendChild(tr);
+      });
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
